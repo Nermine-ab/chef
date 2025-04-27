@@ -163,13 +163,11 @@
         android:id="@+id/imageView"
         android:layout_width="52dp"
         android:layout_height="46dp"
-        android:onClick="fnish onClick"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="finish onClick"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVert8ical_bias="0.039"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

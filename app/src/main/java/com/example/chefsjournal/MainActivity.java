@@ -28,5 +28,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        // à faire verification et base de données
+        findViewById(R.id.connecter).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity3.class);
+                startActivity(intent);
+            }
+        });
     }
 }
