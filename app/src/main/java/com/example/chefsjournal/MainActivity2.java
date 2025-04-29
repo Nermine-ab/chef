@@ -97,7 +97,7 @@ public class MainActivity2 extends AppCompatActivity {
             return false ;
         }
     }
-    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+    /*DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
     databaseAccess.open();
 
     // Exemple : insertion d'un utilisateur
@@ -114,6 +114,6 @@ public class MainActivity2 extends AppCompatActivity {
     else {
         Toast.makeText(this, "Erreur lors de l'inscription", Toast.LENGTH_SHORT).show();
     }
-    databaseAccess.close();
+    databaseAccess.close();*/
 
 }

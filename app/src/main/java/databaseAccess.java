@@ -1,4 +1,4 @@
-package com.example.menugenerator;
+/*package com.example.menugenerator;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -40,4 +40,4 @@ public class DatabaseAccess {
         }
         return null;
     }
-}
+}*/

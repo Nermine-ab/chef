@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+    /*DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
     databaseAccess.openI();
 
     Cursor cursor = databaseAccess.db.rawQuery(
@@ -57,6 +57,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     if (cursor != null) cursor.close();
-    databaseAccess.close();
+    databaseAccess.close();*/
 
 }
