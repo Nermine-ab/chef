@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import android.content.ContentValues ;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
                     Toast.makeText(MainActivity2.this,"nom invalid",Toast.LENGTH_LONG).show();
                     t = false;
                 }
-                else if(prenom.getText().toString()=="" || est_alpha(prenom.getText().toString())==false ){
+                else if(prenom.getText().toString().isEmpty() || est_alpha(prenom.getText().toString())==false ){
                     Toast.makeText(MainActivity2.this,"prenom invalid",Toast.LENGTH_LONG).show();
                     t = false;
                 }
@@ -62,7 +63,28 @@ public class MainActivity2 extends AppCompatActivity {
                     t = false;
 
                 }
+                if (t) {
+                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+                    databaseAccess.open(); //
 
+                    ContentValues values = new ContentValues(); //
+                    values.put("Nom", nom.getText().toString()); //
+                    values.put("Prenom", prenom.getText().toString());
+                    values.put("Username", username.getText().toString());
+                    values.put("Email", email.getText().toString());
+                    values.put("MotDePasse", mdp.getText().toString());
+
+                    long newRowId = databaseAccess.getDb().insert("Utilisateur", null, values); // ✅ getDb() pour accéder à SQLiteDatabase
+
+                    if (newRowId != -1) {
+                        Toast.makeText(MainActivity2.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        Toast.makeText(MainActivity2.this, "Erreur lors de l'inscription", Toast.LENGTH_SHORT).show();
+                    }
+
+                    databaseAccess.close();
+                }
 
             }
         });
@@ -70,50 +92,29 @@ public class MainActivity2 extends AppCompatActivity {
     public boolean est_alpha(String str) {
         return str.matches("[a-zA-Z]+");
     }
-    public boolean verifier_mot_passe(String ch){
-        boolean t =true;
-        int nbmaj =0 ;
-        int nbnum = 0 ;
+    public boolean verifier_mot_passe(String ch) {
+        boolean t = true;
+        int nbmaj = 0;
+        int nbnum = 0;
         int nbmin = 0;
-        for(int i=0;i<ch.length();i++){
-            if(ch.charAt(i) >= 'A' && ch.charAt(i) <= 'Z'){
-                nbmaj = nbmaj +1 ;
-            }
-            else if (ch.charAt(i) >= 'a' && ch.charAt(i) <= 'z'){
-                nbmin = nbmin +1 ;
+        for (int i = 0; i < ch.length(); i++) {
+            if (ch.charAt(i) >= 'A' && ch.charAt(i) <= 'Z') {
+                nbmaj = nbmaj + 1;
+            } else if (ch.charAt(i) >= 'a' && ch.charAt(i) <= 'z') {
+                nbmin = nbmin + 1;
 
-            }
-            else if(ch.charAt(i) >= '0' && ch.charAt(i) <= '9'){
-                nbnum =nbnum+1 ;
-            }
-            else{
-                t = false ;
+            } else if (ch.charAt(i) >= '0' && ch.charAt(i) <= '9') {
+                nbnum = nbnum + 1;
+            } else {
+                t = false;
             }
         }
-        if((nbmaj>=1 && nbmin >=1 && nbnum>=1) && t==true){
-            return true ;
+        if ((nbmaj >= 1 && nbmin >= 1 && nbnum >= 1) && t == true) {
+            return true;
+        } else {
+            return false;
         }
-        else{
-            return false ;
-        }
     }
-    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
-    databaseAccess.open();
 
-    // Exemple : insertion d'un utilisateur
-    ContentValues values = new ContentValues();
-    values.put("Nom", utilisateurNom);  // utilisateurNom = nom récupéré depuis EditText
-    values.put("MotDePasse", utilisateurMotDePasse);  // utilisateurMotDePasse = mot de passe
-// Ajoute d'autres champs si nécessaire
-
-    long newRowId = databaseAccess.db.insert("Utilisateur", null, values);
-    if (newRowId != -1) {
-        Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
-        finish(); // Retourner à la connexion
-    }
-    else {
-        Toast.makeText(this, "Erreur lors de l'inscription", Toast.LENGTH_SHORT).show();
-    }
-    databaseAccess.close();
 
 }

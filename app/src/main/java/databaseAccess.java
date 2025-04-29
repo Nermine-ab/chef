@@ -1,4 +1,4 @@
-package com.example.menugenerator;
+com.example.menugenerator;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -22,7 +22,7 @@ public class DatabaseAccess {
     }
 
     public void open() {
-        this.db = openHelper.getWritableDatabase();
+        this.db = openHelper.getReadableDatabase();
     }
 
     public void close() {
@@ -30,14 +30,18 @@ public class DatabaseAccess {
             this.db.close();
         }
     }
-
+    public SQLiteDatabase getDb() {
+        return db;
+    }
     public String getNombreDeParticipants(String utilisateur) {
-        c = db.rawQuery("SELECT NombreDeParticipants FROM Utilisateur WHERE Nom=?", new String[]{utilisateur});
-        if (c != null && c.moveToFirst()) {
-            String result = c.getString(0);
-            c.close();
-            return result;
+        String result = null;
+        Cursor c = db.rawQuery("SELECT NombreDeParticipants FROM Utilisateur WHERE Nom=?", new String[]{utilisateur});
+        if (c != null) {
+            if (c.moveToFirst()) {
+                result = c.getString(0);
+            }
+            c.close(); // ✅ toujours fermer le curseur, même si vide
         }
-        return null;
+        return result;
     }
 }
