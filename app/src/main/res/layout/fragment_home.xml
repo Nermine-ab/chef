@@ -6,11 +6,14 @@
     android:background="#D16262"
     tools:context=".HomeFragment" >
 
-    <TextView
-        android:id="@+id/textView9"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Home"
-        android:textSize="24sp"
-        />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:layout_width="409dp"
+            android:layout_height="729dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="1dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

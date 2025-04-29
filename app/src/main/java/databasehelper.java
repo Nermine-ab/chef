@@ -1,4 +1,4 @@
-package com.example.menugenerator;
+/*package com.example.menugenerator;
 
 import android.content.Context;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
@@ -12,3 +12,4 @@ public class DatabaseHelper extends SQLiteAssetHelper {
     }
 }
 
+*/

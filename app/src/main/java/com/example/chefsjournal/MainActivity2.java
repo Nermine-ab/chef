@@ -63,7 +63,7 @@ public class MainActivity2 extends AppCompatActivity {
                     t = false;
 
                 }
-                if (t) {
+                /*if (t) {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                     databaseAccess.open(); //
 
@@ -84,7 +84,7 @@ public class MainActivity2 extends AppCompatActivity {
                     }
 
                     databaseAccess.close();
-                }
+                }*/
 
             }
         });

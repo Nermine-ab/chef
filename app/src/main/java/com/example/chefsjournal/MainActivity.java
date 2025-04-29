@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, MainActivity3.class);
                 startActivity(intent);
-                String nomUtilisateur = editTextNom.getText().toString();
+                /*String nomUtilisateur = editTextNom.getText().toString();
                 String motDePasse = editTextMotDePasse.getText().toString();
                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
                 databaseAccess.openI();
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (cursor != null) cursor.close();
-                databaseAccess.close();
+                databaseAccess.close();*/
             }
         });
     }
