@@ -37,4 +37,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+    databaseAccess.openI();
+
+    Cursor cursor = databaseAccess.db.rawQuery(
+            "SELECT * FROM Utilisateur WHERE Nom=? AND MotDePasse=?",
+            new String[]{nomUtilisateur, motDePasse}
+    );
+
+    if (cursor != null && cursor.moveToFirst()) {
+        Toast.makeText(this, "Connexion réussie", Toast.LENGTH_SHORT).show();
+        // Lancer l'activité principale par exemple
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+    else {
+        Toast.makeText(this, "Nom d'utilisateur ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+    }
+
+    if (cursor != null) cursor.close();
+    databaseAccess.close();
+
 }

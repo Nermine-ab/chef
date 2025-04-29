@@ -97,4 +97,23 @@ public class MainActivity2 extends AppCompatActivity {
             return false ;
         }
     }
+    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(getApplicationContext());
+    databaseAccess.open();
+
+    // Exemple : insertion d'un utilisateur
+    ContentValues values = new ContentValues();
+    values.put("Nom", utilisateurNom);  // utilisateurNom = nom récupéré depuis EditText
+    values.put("MotDePasse", utilisateurMotDePasse);  // utilisateurMotDePasse = mot de passe
+// Ajoute d'autres champs si nécessaire
+
+    long newRowId = databaseAccess.db.insert("Utilisateur", null, values);
+    if (newRowId != -1) {
+        Toast.makeText(this, "Inscription réussie", Toast.LENGTH_SHORT).show();
+        finish(); // Retourner à la connexion
+    }
+    else {
+        Toast.makeText(this, "Erreur lors de l'inscription", Toast.LENGTH_SHORT).show();
+    }
+    databaseAccess.close();
+
 }
