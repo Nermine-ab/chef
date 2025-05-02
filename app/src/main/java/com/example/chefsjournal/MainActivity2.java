@@ -26,6 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         findViewById(R.id.send).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +89,9 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
+    }
+    public void onClickFinish(View view) {
+        finish();
     }
     public boolean est_alpha(String str) {
         return str.matches("[a-zA-Z]+");

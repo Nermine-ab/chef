@@ -7,30 +7,75 @@
     android:background="#506697"
     tools:context=".userFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#95BC97">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="184dp"
-            android:layout_marginTop="36dp"
-            android:text="Utilisateur : "
-            android:textColor="#FAFAFA"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="#95BC97">
 
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/image"
-            tools:layout_editor_absoluteX="24dp"
-            tools:layout_editor_absoluteY="41dp" />
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="196dp"
+                android:layout_marginTop="52dp"
+                android:text="Utilisateur : "
+                android:textColor="#FAFAFA"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView12"
+                android:layout_width="171dp"
+                android:layout_height="180dp"
+                android:layout_marginStart="16dp"
+                android:src="@mipmap/image_foreground"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- ligne -->
+            <View
+                android:id="@+id/separator"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="À chaque recette, une histoire. À chaque plat, une émotion."
+                app:layout_constraintTop_toBottomOf="@+id/separator"
+                tools:layout_editor_absoluteX="16dp" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="364dp"
+                android:layout_height="527dp"
+                android:layout_marginTop="64dp"
+                android:background="@android:color/white"
+                android:gravity="top|start"
+                android:hint="Écris ta liste d'achats ici..."
+                android:inputType="textMultiLine"
+                android:minLines="10"
+                android:padding="16dp"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.489"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/separator" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </FrameLayout>

@@ -1,12 +1,17 @@
 package com.example.chefsjournal;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +20,13 @@ import android.view.ViewGroup;
  */
 public class userFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    private EditText editText;
+    private static final String PREFS_NAME = "shopping_list_prefs";
+    private static final String KEY_LIST = "shopping_list";
+
     private String mParam1;
     private String mParam2;
 
@@ -28,15 +34,6 @@ public class userFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment userFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static userFragment newInstance(String param1, String param2) {
         userFragment fragment = new userFragment();
         Bundle args = new Bundle();
@@ -58,7 +55,24 @@ public class userFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
+
+        editText = view.findViewById(R.id.editText);
+
+        final SharedPreferences prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        String savedList = prefs.getString(KEY_LIST, "");
+        editText.setText(savedList);
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override public void afterTextChanged(Editable s) {
+                prefs.edit().putString(KEY_LIST, s.toString()).apply();
+            }
+        });
+
+        return view;
     }
 }
+
+

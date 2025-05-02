@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "874262736989",
+    "project_id": "chef-s-journey",
+    "storage_bucket": "chef-s-journey.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874262736989:android:cb886d5c2a341baa589db4",
+        "android_client_info": {
+          "package_name": "com.example.chefsjournal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG0e1kwFfdLzryYuz4G1rq4o5yhSeuNac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

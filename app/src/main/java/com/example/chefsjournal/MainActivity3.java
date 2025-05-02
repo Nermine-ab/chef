@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import android.content.Intent ;
+import android.widget.Toast ;
+import android.widget.TextView ;
 import com.google.android.material.navigation.NavigationBarView;
 
 
@@ -32,11 +34,15 @@ public class MainActivity3 extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
         bottomNavigationView.setSelectedItemId(R.id.menu_home);
-        //afficher menul_home par defaut
+        /*//afficher menul_home par defaut
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, new HomeFragment())
-                .commit();
+                .commit();*/
+        Intent intent = getIntent();
+        String s1 = intent.getExtras().getString("name");
+        TextView textView = findViewById(R.id.textViewBienvenue);
+        textView.setText("Bienvenue " + s1);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener(){
 
