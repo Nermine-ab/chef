@@ -4,9 +4,6 @@
         android:icon="@drawable/icons8_home"
         android:id="@+id/menu_home"
         />
-    <item android:title="Search"
-        android:icon="@drawable/icons8_chercher"
-        android:id="@+id/menu_search"/>
     <item android:title="User"
         android:icon="@drawable/user_icon_svgrepo_com"
         android:id="@+id/menu_user"/>

@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,6 +30,9 @@ public class HomeFragment extends Fragment {
 
 
     };
+
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -65,18 +67,42 @@ public class HomeFragment extends Fragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 requireContext(),
-                android.R.layout.simple_list_item_1,
+                R.layout.item_category,
+                R.id.textCategory,
                 categories
         );
-
         listViewCategories.setAdapter(adapter);
-
         listViewCategories.setOnItemClickListener((parent, view1, position, id) -> {
-            String selectedCategory = categories[position];
-            Toast.makeText(getContext(), "Tu as choisi : " + selectedCategory, Toast.LENGTH_SHORT).show();
+            Fragment selectedFragment;
 
-            // TODO: tu peux ici afficher un nouveau fragment avec les recettes de la catégorie
+            switch (position) {
+                case 0:
+                    selectedFragment = new soupes();
+                    break;
+                case 1:
+                    selectedFragment = new viande();
+                    break;
+                case 2:
+                    selectedFragment = new DessertsFragment();
+                    break;
+                case 3:
+                    selectedFragment = new pain();
+                    break;
+                default:
+                    selectedFragment = null;
+            }
+
+            if (selectedFragment != null) {
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, selectedFragment) // ID de ton conteneur dans l'activity
+                        .addToBackStack(null)
+                        .commit();
+            }
         });
+
+
+
 
         return view;
     }

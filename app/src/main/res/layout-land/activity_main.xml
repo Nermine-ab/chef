@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="#38D5C98F"
+    tools:context=".MainActivity">
+
+    <!-- Partie image à gauche -->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/chef_s_journal__5__removebg_preview" />
+
+    <!-- Partie formulaire à droite -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nom Utilisateur"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/nomutilisateur"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:ems="10" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mot de passe"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/motdepasse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textPassword"
+                android:ems="10" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/connecter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Se Connecter"
+            android:backgroundTint="#03A9F4"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/sincrire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="s'inscrire"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
